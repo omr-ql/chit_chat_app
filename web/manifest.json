@@ -1,0 +1,35 @@
+{
+    "name": "chit_chat",
+    "short_name": "chit_chat",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": ""Chit Chat" is a dynamic Flutter-based chat application designed to facilitate seamless communication between users. With its sleek design and user-friendly interface, 'Chit Chat' allows individuals to connect effortlessly through text-based messages. Whether you're chatting one-on-one or in a group, 'Chit Chat' ensures a smooth and enjoyable messaging experience, making staying in touch with friends, family, and colleagues easier than ever.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
