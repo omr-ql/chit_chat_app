@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'registration_screen.dart' ;
+import 'registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 class WelcomeScreen extends StatefulWidget {
-  static const String id = 'welcome_screen' ;
+  static const String id = 'welcome_screen';
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        duration: Duration(seconds: 2), vsync: this, upperBound: 100.0);
+    controller.forward();
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +36,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Row(
               children: <Widget>[
                 Hero(
-                  tag: 'logo' ,
+                  tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: controller.value,
                   ),
                 ),
-                Text(
-                  'Welcome to Chit Chat',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
-                  ),
+                // Wrap TypewriterAnimatedText in AnimatedTextKit
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Chit Chat',
+                      textStyle: TextStyle(
+                        fontSize: 48.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      speed: Duration(milliseconds: 100),
+                    ),
+                  ],
+                  // Optional: Repeat the animation
+                  repeatForever: true,
                 ),
               ],
             ),
@@ -47,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.pushNamed(context,LoginScreen.id) ;
+                    Navigator.pushNamed(context, LoginScreen.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
